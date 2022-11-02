@@ -1,0 +1,14 @@
+// config
+@import "./_reset.css";
+
+// screens
+@import "./screens/home.scss";
+
+// components
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
