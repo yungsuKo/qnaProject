@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <% include('../components/header.ejs') %>
+    <script src="./assets/js/main.js"></script>
+    <link rel="stylesheet" href="../../../assets/css/styles.css"> 
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css"> 
+</head>
+
+<body>
+    <header>
+        <div class="header__logo">
+            <a href="/"><img src="#"/></a>
+        </div>
+        <nav>
+            <ul>
+                <a href="/login"><li>login</li></a>
+                <a href="/signup"><li>signup</li></a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h4><span>"<%=questionTitle%>"</span> 질문지를 채워주세요!</h4>
+        <form method="post">
+            <% for(let i = 0; i<questionCount; i++){ %>
+                <% const questionNum = "question"+(i+1) %>
+                <label for=<%=questionNum%>>질문 <%=i+1 %>.</label>
+                <input type="text" id=<%=questionNum%> />
+            <% } %>
+            <input type="submit" value="저장"/>
+        </form>
+    </main>  
+    
+</body>
+</html>

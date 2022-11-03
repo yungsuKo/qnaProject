@@ -59,6 +59,16 @@ table {
   justify-content: space-between;
 }
 
+header {
+  width: 50%;
+  min-width: 400px;
+  display: flex;
+  justify-content: space-between;
+}
+header .header__logo {
+  height: 30px;
+}
+
 body {
   display: flex;
   flex-direction: column;

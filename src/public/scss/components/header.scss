@@ -1,0 +1,10 @@
+header{
+    width: 50%;
+    min-width: 400px;
+    
+    display: flex;
+    justify-content: space-between;
+    .header__logo{
+        height: 30px;
+    }
+}
