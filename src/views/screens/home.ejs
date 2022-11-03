@@ -15,8 +15,12 @@
         </div>
         <nav>
             <ul>
-                <a href="/login"><li>login</li></a>
-                <a href="/signup"><li>signup</li></a>
+                <% if(locals.userLoggedIn){%>
+                    <a href="/logout"><li>logout</li></a>
+                <%}else{%>
+                    <a href="/login"><li>login</li></a>
+                    <a href="/signup"><li>signup</li></a>
+                <%}%>
             </ul>
         </nav>
     </header>
@@ -24,7 +28,7 @@
         <h1>질문지를 만들어 보아요!</h1>
         <form action="/create">
             <label for="questionTitle">제목</label>
-            <input type="test" id="questionTitle" name="questionTitle" placeHolder="제목을 입력해주세요"/>
+            <input type="text" id="questionTitle" name="questionTitle" placeHolder="제목을 입력해주세요"/>
             <label for="questionCount">문항수</label>
             <select id="questionCount" name="questionCount">
                 <option value="1">1</option>

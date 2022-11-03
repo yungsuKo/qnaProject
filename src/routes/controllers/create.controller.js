@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+var Question = require("../../models/Question");
 
 
 router.get("/", async(req, res, next) => {
@@ -12,8 +13,13 @@ router.get("/", async(req, res, next) => {
     });
 })
 
-router.post("/",(req, res, next)=>{
-    
+router.post("/", async (req, res, next)=>{
+    const {questionCount,questionTitle} = req.query;
+    const question = await Question.create({
+        questionCount
+    });
+    console.log(question);
+    res.redirect("/");
 })
 
 module.exports = router;

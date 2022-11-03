@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <% include('../components/header.ejs') %>
+    
+    <script src="./assets/js/main.js"></script>
+    <link rel="stylesheet" href="../../../assets/css/styles.css"> 
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css"> 
+</head>
+
+<body>
+    <header>
+        <div class="header__logo">
+            <a href="/"><img src="#"/></a>
+        </div>
+        <nav>
+            <ul>
+                <a href="/login"><li>login</li></a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h3><%=pageTitle%></h3>
+        <form method="post">
+            <label for="id">ID</label>
+            <input type="email" id="id" name="id" placeHolder="ID"/>
+            <!-- 나중에는 닉네임 중복 검사 추가하기 -->
+            <label for="nickname">Nickname</label>
+            <input type="text" id="nickname" name="nickname" placeHolder="Nickname"/>
+            <label for="password1">Password</label>
+            <input type="password" id="password1" name="password1" placeHolder="Password"/>
+            <label for="password2">Check Password</label>
+            <input type="password" id="password2" name="password2" placeHolder="Password"/>
+            <input type="submit" value="Signup"/>
+        </form>
+        <a href="/login">이미 계정이 있다면? &rarr;</a>
+    </main>  
+    
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <% include('../components/header.ejs') %>
+    
+    <script src="./assets/js/main.js"></script>
+    <link rel="stylesheet" href="../../../assets/css/styles.css"> 
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css"> 
+</head>
+
+<body>
+    <header>
+        <div class="header__logo">
+            <a href="/"><img src="#"/></a>
+        </div>
+        <nav>
+            <ul>
+                <a href="/signup"><li>signup</li></a>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h3><%=pageTitle%></h3>
+        <form method="post">
+            <label for="id">ID</label>
+            <input type="text" id="id" name="id" placeHolder="ID"/>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeHolder="Password"/>
+            <input type="submit" value="Login"/>
+        </form>
+        <a href="/signup">처음이라면? &rarr;</a>
+    </main>  
+    
+</body>
+</html>
