@@ -25,7 +25,7 @@
             <% for(let i = 0; i<questionCount; i++){ %>
                 <% const questionNum = "question"+(i+1) %>
                 <label for=<%=questionNum%>>질문 <%=i+1 %>.</label>
-                <input type="text" id=<%=questionNum%> />
+                <input type="text" id=<%=questionNum%> name=<%=questionNum%> />
             <% } %>
             <input type="submit" value="저장"/>
         </form>

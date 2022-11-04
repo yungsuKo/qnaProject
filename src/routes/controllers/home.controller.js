@@ -3,7 +3,6 @@ var router = express.Router();
 
 
 router.get("/", async(req, res, next) => {
-
     res.render("screens/home",{
         pageTitle : "홈",
     });

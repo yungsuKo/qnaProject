@@ -14,9 +14,21 @@ router.get("/", async(req, res, next) => {
 })
 
 router.post("/", async (req, res, next)=>{
-    const {questionCount,questionTitle} = req.query;
+    const {body} = req;
+    const {url} = req;
+    console.log(url);
+    const questionNumList = Object.keys(body);
+    let questionList = Object.values(body);
+    
+    questionNumList.forEach(function(questionNum, i){
+        console.log(questionNum, String(questionList[i]));
+        eval(questionNum+`="${questionList[i]}"`);
+    });
+
     const question = await Question.create({
-        questionCount
+        questions : body,
+        questionCnt : questionNumList.length,
+        owner : req.session.user._id
     });
     console.log(question);
     res.redirect("/");

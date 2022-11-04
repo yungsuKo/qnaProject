@@ -19,9 +19,10 @@ router.post("/", async (req, res, next) => {
     if(!compare){
         return res.redirect("/login");    
     }
-    
+
     req.session.user = user;
     req.session.userLoggedIn = true;
+    console.log(req.session);
     return res.redirect("/");
 });
 
