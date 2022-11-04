@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema({
     id: {type: String, required:true},
     nickname: {type: String, required:true},
     password:{type: String, required:true},
-    questions : [{type: mongoose.Schema.Types.ObjectId}]
+    questions : [{type: mongoose.Schema.Types.ObjectId, ref:'Question'}]
 })
 
 userSchema.pre("save", async function(){

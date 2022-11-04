@@ -6,6 +6,7 @@
     <script src="./assets/js/main.js"></script>
     <link rel="stylesheet" href="../../../assets/css/styles.css"> 
     <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css"> 
+    <script src="https://kit.fontawesome.com/b8969f7e81.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -13,16 +14,16 @@
         <div class="header__logo">
             <a href="/"><img src="#"/></a>
         </div>
-        <nav>
-            <ul>
-                <% if(locals.userLoggedIn){%>
-                    <a href="/logout"><li>logout</li></a>
-                <%}else{%>
-                    <a href="/login"><li>login</li></a>
-                    <a href="/signup"><li>signup</li></a>
-                <%}%>
-            </ul>
-        </nav>
+        
+        <ul>
+            <% if(locals.userLoggedIn){%>
+                <a href="/logout"><li>logout</li></a>
+            <%}else{%>
+                <a href="/login"><li>login</li></a>
+                <a href="/signup"><li>signup</li></a>
+            <%}%>
+        </ul>
+        
     </header>
     <main>
         <h1>질문지를 만들어 보아요!</h1>
@@ -38,6 +39,12 @@
             <button>새로 만들기</button>
         </form>
     </main>  
-    
+    <div class="question__item-list">
+        <% if(locals.questionList){%>
+            <%questionList.forEach(function(question){ %>
+                <%- include("../components/questionItem",{question}) %>
+            <%})%>
+        <%}%>
+    </div>
 </body>
 </html>

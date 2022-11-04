@@ -52,16 +52,36 @@ table {
 /*!**********************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/public/scss/styles.scss ***!
   \**********************************************************************************************************************/
-.main-content {
+.question__item-list {
+  max-width: var(--width-content);
+  width: 80%;
+  min-width: 440px;
+  margin: 0 auto;
   display: flex;
-  padding: 30px;
-  background-color: blue;
-  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.question__item-list .question__item {
+  width: 20%;
+  margin: 10px;
+  border: 1px solid #e9e9e9;
+  padding: 10px;
+  box-shadow: var(--box-shadow) var(--color-shadow);
+}
+.question__item-list .question__item .question__item-title h4 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.question__item-list .question__item .question__item-data {
+  text-align: right;
+}
+.question__item-list .question__item .question__item-data span {
+  margin-left: 10px;
 }
 
 header {
-  width: 50%;
-  min-width: 400px;
+  max-width: var(--width-content);
+  width: 80%;
+  min-width: 440px;
   display: flex;
   justify-content: space-between;
 }

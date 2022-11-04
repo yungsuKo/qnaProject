@@ -1,6 +1,7 @@
 header{
-    width: 50%;
-    min-width: 400px;
+    max-width: var(--width-content);
+    width: 80%;
+    min-width: 440px;
     
     display: flex;
     justify-content: space-between;

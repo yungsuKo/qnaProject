@@ -35,6 +35,7 @@ app.use("/create", require("./routes/controllers/create.controller"));
 app.use("/login", require("./routes/controllers/login.controller"));
 app.use("/logout", require("./routes/controllers/logout.controller"));
 app.use("/signup", require("./routes/controllers/signup.controller"));
+app.use("/question", require("./routes/controllers/question.controller"));
 
 db.once('open',function(){
     console.log("mongodb connected");

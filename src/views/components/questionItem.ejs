@@ -1,0 +1,12 @@
+
+<div class="question__item">
+    <a href="/question/<%=question._id%>">
+        <div class="question__item-title">
+            <h4><%= question.questionTitle %></h4>
+        </div>
+    </a>
+    <div class="question__item-data">
+        <span> <i class="fa-solid fa-eye"></i> <%= question.views %> </span>
+        <span> <i class="fa-solid fa-square-poll-vertical"></i> <%= question.results %> </span>
+    </div>
+</div>
