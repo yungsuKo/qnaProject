@@ -4,11 +4,14 @@ const User = require('../../models/User');
 const Question = require('../../models/Question');
 
 router.get("/", async(req, res, next) => {
-    const user = await (await User.findById(req.session.user._id)).populate('questions');
-    console.log(user);
+    let user;
+    if(req.session.user){
+       user = await (await User.findById(req.session.user._id)).populate('questions');
+    }
+    
     res.render("screens/home",{
         pageTitle : "홈",
-        questionList:user.questions,
+        questionList:user,
     });
 })
 

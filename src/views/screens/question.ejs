@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <% include('../components/header.ejs') %>
+    
+    <script src="./assets/js/main.js"></script>
+    <link rel="stylesheet" href="../../../assets/css/styles.css"> 
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css"> 
+    <script src="https://kit.fontawesome.com/b8969f7e81.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header__logo">
+            <a href="/"><img src="#"/></a>
+        </div>
+        
+        <ul>
+            <% if(locals.userLoggedIn){%>
+                <a href="/logout"><li>logout</li></a>
+            <%}else{%>
+                <a href="/login"><li>login</li></a>
+                <a href="/signup"><li>signup</li></a>
+            <%}%>
+        </ul>
+        
+    </header>
+    <main>
+        <h1>응답해주세요!</h1>
+        <form method="post">
+            <% if(locals.user){ %>
+                <% const email = questions %>
+                <% console.log(email) %>
+                <% if(email == user.id){ %>
+                    <a>질문지 수정하기</a>
+                <% } %>
+            <% } %>
+            <% questions.forEach(function(question, i){ %>
+                <% var questionNum = "question"+(i+1) %>
+                <label for="questionTitle"><%= question %></label>
+                <input type="text" id="questionTitle" name="<%= questionNum%>" placeHolder="답변을 입력해주세요"/>
+            <% }) %>
+            
+            <input type="submit" value="제출하기"/>
+        </form>
+    </main>  
+</body>
+</html>

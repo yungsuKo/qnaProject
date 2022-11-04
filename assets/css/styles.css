@@ -78,6 +78,11 @@ table {
   margin-left: 10px;
 }
 
+form a {
+  display: block;
+  text-align: right;
+}
+
 header {
   max-width: var(--width-content);
   width: 80%;

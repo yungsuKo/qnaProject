@@ -20,6 +20,7 @@ router.post("/", async (req, res, next) => {
         return res.redirect("/login");    
     }
 
+    console.log(user);
     req.session.user = user;
     req.session.userLoggedIn = true;
     console.log(req.session);
