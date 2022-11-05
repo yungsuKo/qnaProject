@@ -37,7 +37,7 @@ router.post("/:id([0-9a-f]{24})", async(req, res, next) => {
     question.answers.push(answer._id);
     question.save();
 
-    return res.redirect(`/question/${id}`);
+    return res.redirect(`/answer/${answer._id}`);
 })
 
 
@@ -59,9 +59,9 @@ router.post("/:id([0-9a-f]{24})/edit", async(req, res, next) => {
     const question = await Question.findByIdAndUpdate(id, {
         questions: body
     });
-    
+
     console.log(question);
-    return res.redirect("/");
+    return res.redirect(`/question/${id}`);
 })
 
 module.exports = router;
