@@ -36,12 +36,32 @@ router.post("/:id([0-9a-f]{24})", async(req, res, next) => {
     });
     question.answers.push(answer._id);
     question.save();
+
     return res.redirect(`/question/${id}`);
 })
 
 
 router.get("/:id([0-9a-f]{24})/edit", async(req, res, next) => {
-    return res.render("screens/question",{})
+    const {id} = req.params;
+    const question = await Question.findById(id);
+    const questionList = Object.values(question.questions);
+    console.log(question);
+    return res.render("screens/questionEdit",{
+        questionList
+    })
+})
+
+router.post("/:id([0-9a-f]{24})/edit", async(req, res, next) => {
+    const {
+        body,
+        params: {id}
+    } = req;
+    const question = await Question.findByIdAndUpdate(id, {
+        questions: body
+    });
+    
+    console.log(question);
+    return res.redirect("/");
 })
 
 module.exports = router;

@@ -26,20 +26,14 @@
         
     </header>
     <main>
-        <h1>응답해주세요!</h1>
+        <h1>수정해주세요!</h1>
         <form method="post">
-            <% if( locals.user ){ %>
-                <% if(questions.owner.id == user.id){ %>
-                    <a href="/question/<%=questions._id%>/edit">질문지 수정하기</a>
-                <% } %>
-            <% } %>
             <% questionList.forEach(function(question, i){ %>
                 <% var questionNum = "question"+(i+1) %>
-                <label for="questionTitle"><%= question %></label>
-                <input type="text" required id="questionTitle" name="<%=questionNum %>" placeHolder="답변을 입력해주세요"/>
+                <label for="questionTitle">질문 <%= i+1 %>.</label>
+                <input type="text" id="questionTitle" required name="<%=questionNum %>" placeHolder="답변을 입력해주세요" value="<%= question%>"/>
             <% }) %>
-            
-            <input type="submit" value="제출하기"/>
+            <input type="submit" value="수정하기"/>
         </form>
     </main>  
 </body>

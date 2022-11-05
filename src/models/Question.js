@@ -7,7 +7,7 @@ const questionSchema = new mongoose.Schema({
     owner : {type: mongoose.Schema.Types.ObjectId, ref:'User' ,required: true},
     views : {type:Number, default:0, required: true},
     results : {type:Number, default:0, required: true},
-    answers : [{type: mongoose.Schema.Types.ObjectId, ref:'Question'}]
+    answers : [{type: mongoose.Schema.Types.ObjectId, ref:'Answer'}]
 });
 
 const Question = mongoose.model("Question", questionSchema);
