@@ -5,6 +5,7 @@ const app = express();
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const mongoose = require('mongoose');
+const {publicAccessMiddleware, privateAccessMiddleware} = require('./middlewares');
 
 mongoose.connect(process.env.MONGO_URL,{});
 const db = mongoose.connection;
@@ -31,11 +32,12 @@ app.use(function (req, res, next){
 });
 
 app.use("/", require("./routes/controllers/home.controller"));
-app.use("/create", require("./routes/controllers/create.controller"));
-app.use("/login", require("./routes/controllers/login.controller"));
-app.use("/logout", require("./routes/controllers/logout.controller"));
-app.use("/signup", require("./routes/controllers/signup.controller"));
+app.use("/create", privateAccessMiddleware, require("./routes/controllers/create.controller"));
+app.use("/login", publicAccessMiddleware, require("./routes/controllers/login.controller"));
+app.use("/logout", privateAccessMiddleware, require("./routes/controllers/logout.controller"));
+app.use("/signup", publicAccessMiddleware, require("./routes/controllers/signup.controller"));
 app.use("/question", require("./routes/controllers/question.controller"));
+app.use("/answer", require("./routes/controllers/answer.controller"));
 
 db.once('open',function(){
     console.log("mongodb connected");
