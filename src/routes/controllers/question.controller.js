@@ -1,21 +1,46 @@
 const express = require('express');
 const router = express.Router();
 const Question = require('../../models/Question');
+const Answer = require('../../models/Answer')
 
-router.get("/:id", async(req, res, next)=>{
+const timestamp = () => {
+    let date= new Date;
+    date.setHours(date.getHours()+9);
+    date = date.toISOString();
+    return date;
+}
+
+router.get("/:id([0-9a-f]{24})", async(req, res, next)=>{
     const {id} = req.params;
-    let questions = await (await Question.findById(id)).populate("owner");
-    // console.log(questions.owner.id);
-    questions = Object.values(questions.questions);
-    const {owner} = questions;
+    const questions = await (await Question.findById(id)).populate("owner");
+    const questionList = Object.values(questions.questions);
     return res.render("screens/question",{
         pageTitle: "질문페이지",
+        questionList,
         questions,
-        owner,
     });
 })
 
-router.post("/:id", async(req, res, next) => {
+router.post("/:id([0-9a-f]{24})", async(req, res, next) => {
+    const {
+        body,
+        params:{id}
+    } = req;
+    console.log(id, body);
+    const question = await Question.findById(id);
+    const answer = await Answer.create({
+        answer : body,
+        owner : req.session.user._id,
+        question : id,
+        createTime : timestamp()
+    });
+    question.answers.push(answer._id);
+    question.save();
+    return res.redirect(`/question/${id}`);
+})
+
+
+router.get("/:id([0-9a-f]{24})/edit", async(req, res, next) => {
     return res.render("screens/question",{})
 })
 

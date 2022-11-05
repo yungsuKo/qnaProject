@@ -28,17 +28,15 @@
     <main>
         <h1>응답해주세요!</h1>
         <form method="post">
-            <% if(locals.user){ %>
-                <% const email = questions %>
-                <% console.log(email) %>
-                <% if(email == user.id){ %>
+            <% if(locals.user ){ %>
+                <% if(questions.owner.id == user.id){ %>
                     <a>질문지 수정하기</a>
                 <% } %>
             <% } %>
-            <% questions.forEach(function(question, i){ %>
+            <% questionList.forEach(function(question, i){ %>
                 <% var questionNum = "question"+(i+1) %>
                 <label for="questionTitle"><%= question %></label>
-                <input type="text" id="questionTitle" name="<%= questionNum%>" placeHolder="답변을 입력해주세요"/>
+                <input type="text" id="questionTitle" name="<%=questionNum %>" placeHolder="답변을 입력해주세요"/>
             <% }) %>
             
             <input type="submit" value="제출하기"/>
