@@ -3,10 +3,11 @@
 <head>
     <%-include('../components/header.ejs') %>
     
-    <script src="./assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
     <link rel="stylesheet" href="../../../assets/css/styles.css"> 
     <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css"> 
     <script src="https://kit.fontawesome.com/b8969f7e81.js" crossorigin="anonymous"></script>
+    
 </head>
 
 <body>
@@ -28,8 +29,20 @@
     <main>
         <h1>응답이 정상적으로 제출되었습니다!</h1>
         <div class="answer__check">
-            
+            <% answers.forEach(function(answer, i){%>
+                <div class="answer__list-item">
+                    <%= questions[i] %>
+                    <div class="answer__list-item__answer">
+                        <%= answer %>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        <div class="action__component">
+            <div class="action__component-make">나도 만들기</div>
+            <div class="action__component-share">공유하기</div>
         </div>
     </main>  
+    <script src="/assets/js/AnswerComponent.js"></script>
 </body>
 </html>

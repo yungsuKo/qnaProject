@@ -8,8 +8,14 @@ router.get('/:id([0-9a-f]{24})', async (req, res, next) => {
     console.log(id);
     const answerList = await (await Answer.findById(id)).populate("question");
     console.log(answerList);
+    const answers = Object.values(answerList.answer);
+    const questions = Object.values(answerList.question.questions);
+
     return res.render("screens/answer",{
-        pageTitle: answerList.question.questionTitle
+        pageTitle: answerList.question.questionTitle,
+        answers,
+        questions,
+        questionCnt : answerList.question.questionCnt
     });
 })
 
