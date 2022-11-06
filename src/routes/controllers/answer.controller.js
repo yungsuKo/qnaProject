@@ -19,4 +19,11 @@ router.get('/:id([0-9a-f]{24})', async (req, res, next) => {
     });
 })
 
+router.get('/:id([0-9a-f]{24})/share', async (req, res, next) => {
+    const {id} = req.params;
+    const answerList = await (await Answer.findById(id)).populate("question");
+    
+    return res.send({questionId : answerList.question._id});
+})
+
 module.exports = router;
