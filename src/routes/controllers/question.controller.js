@@ -12,12 +12,14 @@ const timestamp = () => {
 
 router.get("/:id([0-9a-f]{24})", async(req, res, next)=>{
     const {id} = req.params;
-    const questions = await (await Question.findById(id)).populate("owner");
+    const questions = await (await (await Question.findById(id)).populate("owner")).populate("answers");
+    console.log(questions.answers);
     const questionList = Object.values(questions.questions);
     return res.render("screens/question",{
         pageTitle: "질문페이지",
         questionList,
         questions,
+        answers: questions.answers
     });
 })
 

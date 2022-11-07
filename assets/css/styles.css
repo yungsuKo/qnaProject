@@ -83,6 +83,10 @@ form a {
   text-align: right;
 }
 
+.answer__list {
+  display: flex;
+}
+
 .answer__check {
   border: 1px solid var(--color-bg-secondary);
   border-radius: var(--border-radius);
