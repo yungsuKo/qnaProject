@@ -15,6 +15,8 @@ router.get("/:id([0-9a-f]{24})", async(req, res, next)=>{
     const questions = await (await (await Question.findById(id)).populate("owner")).populate("answers");
     console.log(questions.answers);
     const questionList = Object.values(questions.questions);
+    questions.views += 1;
+    questions.save();
     return res.render("screens/question",{
         pageTitle: "질문페이지",
         questionList,

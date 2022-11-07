@@ -41,24 +41,28 @@
             
             <input type="submit" value="제출하기"/>
         </form>
-        <% if(locals.user){ %>
-            <% if(user.id == questions.owner.id){ %>
-                <% if(locals.answers){ %>
-                    <div class="answer__list">
-                        <% answers.forEach(function(answer, i){ %>
-                            <div class="answer__list-item">
-                                <% var answersList = Object.values(answer.answer); %>
-                                <% answersList.forEach(function(answerValue){ %>
-                                    <div class="answer__list-item">
+    </main>  
+    <% if(locals.user){ %>
+        <% if(user.id == questions.owner.id){ %>
+            <% if(locals.answers){ %>
+                <div class="answer__list">총 응답수 : <%= answers.length %></div>
+                <div class="answer__list">
+                    <% answers.forEach(function(answer, i){ %>
+                        <div class="answer__list-item">
+                            <% var answersList = Object.values(answer.answer); %>
+                            <% answersList.forEach(function(answerValue, i){ %>
+                                <div class="answer__list-item__text">
+                                    <%= questionList[i] %>
+                                    <div class="answer__list-item__answer">
                                         <%= answerValue %>
                                     </div>
-                                <% }) %>
-                            </div>
-                        <% }) %>
-                    </div>
-                <% } %>
+                                </div>
+                            <% }) %>
+                        </div>
+                    <% }) %>
+                </div>
             <% } %>
         <% } %>
-    </main>  
+    <% } %>
 </body>
 </html>

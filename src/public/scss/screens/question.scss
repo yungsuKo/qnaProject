@@ -4,6 +4,49 @@ form{
         text-align: right;
     }
 }
+
 .answer__list{
-    display : flex;
+    display: flex;
+    width: 80%;
+    padding: 1rem 1rem;
+    margin : 0 auto 20px;
+    overflow: auto;
+    .answer__list-item{
+        text-align: var(--justify-normal);
+        min-width: var(--width-card);
+        border: 1px solid var(--color-bg-secondary);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow) var(--color-shadow);
+        padding: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        margin-left: 1rem;
+        .answer__list-item__text{
+            display : flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            .answer__list-item__answer{
+                min-width: 170px;
+                font-weight: 300;
+                border: 1px solid var(--color-bg-secondary);
+                border-radius: var(--border-radius);
+                margin-left: 1rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+        
+    }
+    .answer__list-item:first-child{
+        margin-left: 0px;
+    }
+}
+
+.answer__list::-webkit-scrollbar{
+    width: 10px;
+    background-color: gray;
+    border-radius: 10px;
+}
+.answer__list::-webkit-scrollbar-thumb{
+    background-color: black;
+    border-radius: 10px;
 }
