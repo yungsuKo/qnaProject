@@ -42,7 +42,7 @@
     <div class="question__item-list">
         <% if(locals.questionList){%>
             <% questionList = questionList.questions %>
-            <%questionList.forEach(function(question){ %>
+            <% questionList.forEach(function(question){ %>
                 <%- include("../components/questionItem",{question}) %>
             <%})%>
         <%}%>

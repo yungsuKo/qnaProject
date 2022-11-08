@@ -45,6 +45,7 @@ router.post("/:id([0-9a-f]{24})", async(req, res, next) => {
         createTime : timestamp()
     });
     question.answers.push(answer._id);
+    question.results = question.answers.length;
     question.save();
 
     return res.redirect(`/answer/${answer._id}`);

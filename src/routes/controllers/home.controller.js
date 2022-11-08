@@ -8,7 +8,7 @@ router.get("/", async(req, res, next) => {
     if(req.session.user){
        user = await (await User.findById(req.session.user._id)).populate('questions');
     }
-    
+    console.log(user);
     res.render("screens/home",{
         pageTitle : "홈",
         questionList:user,
