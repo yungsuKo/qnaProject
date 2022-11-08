@@ -6,6 +6,10 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const mongoose = require('mongoose');
 const {publicAccessMiddleware, privateAccessMiddleware} = require('./middlewares');
+const request = require('retry-request', {
+    request: require('request')
+});
+
 
 mongoose.connect(process.env.MONGO_URL,{});
 const db = mongoose.connection;
@@ -42,6 +46,6 @@ app.use("/answer", require("./routes/controllers/answer.controller"));
 db.once('open',function(){
     console.log("mongodb connected");
 });
-app.listen(4000, () => {
+app.listen(4000, () => {    
     console.log("시작됨");
-})
+});

@@ -11,18 +11,24 @@ const timestamp = () => {
 }
 
 router.get("/:id([0-9a-f]{24})", async(req, res, next)=>{
-    const {id} = req.params;
-    const questions = await (await (await Question.findById(id)).populate("owner")).populate("answers");
-    console.log(questions.answers);
-    const questionList = Object.values(questions.questions);
-    questions.views += 1;
-    questions.save();
-    return res.render("screens/question",{
-        pageTitle: "질문페이지",
-        questionList,
-        questions,
-        answers: questions.answers
-    });
+    try{
+        const {id} = req.params;
+        console.log(id);
+        const questions = await (await (await Question.findById(id)).populate("owner")).populate("answers");
+        const questionList = Object.values(questions.questions);
+        questions.views += 1;
+        questions.save();
+        // 이미지 관련된 정보를 못불러와서 retry를 하는 건가..
+        // 만약 그렇다면 retry를 하지 못하도록 세팅해야함..
+        return res.status(200).render("screens/question",{
+            pageTitle: "질문페이지",
+            questionList,
+            questions,
+            answers: questions.answers
+        });
+    }catch(e){
+        console.log(e);
+    }
 })
 
 router.post("/:id([0-9a-f]{24})", async(req, res, next) => {
